@@ -1,5 +1,5 @@
 # CSTranparentAccSDK
-This SDK allows you to access information about Česká spořitelna a.s. transparent accounts [Transparent Accounts API](http://docs.ext0csastransparentaccounts.apiary.io/).
+This SDK allows you to access information from Česká spořitelna a.s. [Transparent Accounts API](https://developers.csas.cz/docs/transparent-account).
 
 # [CHANGELOG](CHANGELOG.md)
 
