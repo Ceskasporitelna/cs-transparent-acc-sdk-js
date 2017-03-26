@@ -5,12 +5,17 @@ This SDK allows you to access information about Česká spořitelna a.s. transpa
 
 # Usage
 
+
+
+TransparentAcc SDK has a peer dependency on [CSCoreSDK](https://github.com/Ceskasporitelna/cs-core-sdk-js).
+
 If you just want to use the SDK, there are compiled files ready to be used in the [`/dist`](./dist) folder.
 
 You can just copy these files directly from the repository or preferably, use `npm` to install it into your project:
 
 ```
-npm install cs-transparent-acc --save
+npm install cs-core-sdk --save
+npm install cs-transparent-acc-sdk --save
 ```
 
 ## Usage in browser
@@ -20,12 +25,10 @@ For usage in browser, pickup the following files from the `/dist` folder:
 * `cs-transparent-acc-sdk.sfx.js.map` - CSTransparentAccSDK sourcemap for browsers
 
 
-TransparentAcc SDK is dependent on the [CSCoreSDK](https://github.com/Ceskasporitelna/cs-core-sdk-js).
-You can find the appropriate verion of CSCoreSDK in `node_modules` of TransparentAcc SDK if you installed it through `npm`.
 Include the `cs-core-sdk.sfx.js` in your page **before** the `cs-transparent-acc-sdk.sfx.js`:
 
 ```html
-  <script src="./node_modules/cs-transparent-acc-sdk/node_modules/cs-core-sdk/dist/cs-core-sdk.sfx.js"></script>
+  <script src="./node_modules/cs-core-sdk/dist/cs-core-sdk.sfx.js"></script>
   <script src="./node_modules/cs-transparent-acc-sdk/dist/cs-transparent-acc-sdk.sfx.js"></script>
 ```
 
@@ -37,7 +40,7 @@ If your environment doesn't support ES6 Promises, you can [polyfill](https://git
 ## Usage in node
 For usage in node, install it through `npm` (see above). You can then require it by:
 ```javascript
-var CSTransparentAccSDK = require('cs-transparentAcc-sdk');
+var CSTransparentAccSDK = require('cs-transparent-acc-sdk');
 ```
 
 
