@@ -1,6 +1,6 @@
 {
   "name": "cs-transparent-acc-sdk",
-  "version": "0.7.3",
+  "version": "1.0.0",
   "description": "SDK for querying transparent accounts from WebApi of Česká spořitelna a.s.",
   "main": "dist/cs-transparent-acc-sdk.node.js",
   "types": "./dist/cs-transparent-acc-sdk.node.d.ts",
