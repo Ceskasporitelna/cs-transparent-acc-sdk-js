@@ -21,13 +21,13 @@ export class TransparentAccountsResource extends CSCoreSDK.Resource
 
     return CSCoreSDK.ResourceUtils.CallPaginatedListWithSuffix(this, null, 'accounts', params, response => {
 
-      response.items.forEach((item) => {
+      response.items.forEach((item: TransparentAccount) => {
 
         // transform ISO strings to native Date objects and add id property
-        transformResponse(<TransparentAccount>item);
+        transformResponse(item);
 
         // add convenient get and transactions getters to the account listing
-        resourcifyResponse(<TransparentAccount>item, this.withId((<TransparentAccount>item).id));
+        resourcifyResponse(item, this.withId(item.id));
       })
       return response;
     });
@@ -58,13 +58,13 @@ export class TransparentAccountResource extends CSCoreSDK.InstanceResource
    * @returns {Promise<TransparentAccount>}
    */
   get = (): Promise<TransparentAccount> => {
-    return CSCoreSDK.ResourceUtils.CallGet(this, null).then(account => {
+    return CSCoreSDK.ResourceUtils.CallGet(this, null).then((account: TransparentAccount) => {
 
       // transform ISO strings to native Date objects and add id property
-      transformResponse(<TransparentAccount>account);
+      transformResponse(account);
 
       // add convenient transactions getter to the account listing
-      (<TransparentAccount>account).transactions = this.transactions;
+      account.transactions = this.transactions;
       return account;
     });
   }
@@ -180,4 +180,10 @@ export interface TransparentAccount {
  * @interface TransparentAccountsParameters
  * @extends {CSCoreSDK.Paginated}
  */
-export interface TransparentAccountsParameters extends CSCoreSDK.Paginated { }
+export interface TransparentAccountsParameters extends CSCoreSDK.Paginated { 
+
+  /**
+   * For filtering accounts by name or description Example: ucet pana Novaka.
+   */
+  filter?: string;
+}

@@ -121,6 +121,42 @@ describe("TransparentAcc SDK",function(){
                 logJudgeError(e);
             });
        });
+
+       it('tests filter query param', done => {
+           judgeSession.setNextCase('transparentAccounts.filter.list').then(() => {
+                return client.accounts.list({
+                    filter: 'školy',
+                    pageNumber: null,
+                    pageSize: null,
+                });
+           }).then(response => {
+            expectToBe(response.pagination, {
+                pageNumber: 0,
+                pageSize: 50,
+                pageCount: 1,
+            });
+
+            expect(response.items.length).toBe(2);
+
+            expectToBe(response.items[0], {
+                accountNumber: '000000-3840968309',
+                bankCode: '0800',
+                balance: 5212.51,
+                currency: 'CZK',
+                name: 'Sdružení rodičů, studentů a přátel školy při Střední průmyslové škole textilní v Liberci, Tyršova 1',
+                iban: 'CZ91 0800 0000 0038 4096 8309',
+            });
+
+            expectDate(response.items[0], {
+                transparencyFrom: '2014-10-30T00:00:00',
+                transparencyTo: '3000-01-01T00:00:00',
+                publicationTo: '3000-01-01T00:00:00',
+                actualizationDate: '2017-07-15T16:01:58',
+            })
+
+            done();
+           })
+       })
        
        it('restrives account by id', (done) => {
             judgeSession.setNextCase("transparentAccounts.withId.get").then(() => {
@@ -205,6 +241,62 @@ describe("TransparentAcc SDK",function(){
           }).catch((e) => {
                 logJudgeError(e);
           });
+       });
+
+       it('tests query params in transactions list', (done) => {
+          var list;
+          judgeSession.setNextCase("transparentAccounts.withId.transactions.filter.list").then(() => {
+              return client.accounts.withId("000000-0109213309").transactions.list({
+                pageSize: 100,
+                pageNumber: 0,
+                sort: 'amount',
+                order: 'asc',
+                filter: '0598',
+                dateFrom: new Date(2017, 4, 12),
+                dateTo: new Date(2017, 5, 12),
+              });
+          }).then(response => {          
+              
+            expectToBe(response.pagination, {
+                pageNumber: 0,
+                pageSize: 100,
+                pageCount: 1
+            });
+
+            expect(response.items.length).toBe(2);
+
+            const transaction = response.items[0];
+
+            expectToBe(transaction, {
+                type: '30500',
+                typeDescription: 'Úrok kredit',
+            });
+
+            expectToBe(transaction.amount, {
+                value: 4.76,
+                precision: 0,
+                currency: 'CZK',
+            });
+            expectToBe(transaction.sender, {
+                accountNumber: '000000-0000000000',
+                bankCode: '0800',
+                iban: 'CZ29 0800 0000 0028 4039 2309',
+                specificSymbol: '0000000000',
+                specificSymbolParty: '0000000000',
+                constantSymbol: '0598',
+            });
+            expectToBe(transaction.receiver, {
+                accountNumber: '000000-2840392309',
+                bankCode: '0800',
+                iban: 'CZ29 0800 0000 0028 4039 2309',
+            });
+            expectDate(transaction, {
+                dueDate: '2017-06-30T00:00:00',
+                processingDate: '2017-06-30T00:00:00',
+            });
+
+            done();
+          }).catch(logJudgeError);
        });
        
        it('should fail if called prevPage with null', (done) => {

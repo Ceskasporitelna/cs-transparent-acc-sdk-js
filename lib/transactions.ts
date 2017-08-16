@@ -15,6 +15,9 @@ export class TransactionsResource extends CSCoreSDK.Resource implements
    * @returns {Promise<TransactionList>}
    */
   list = (params: TransactionsParameters): Promise<TransactionList> => {
+
+    CSCoreSDK.EntityUtils.transformDatesToISO(['dateFrom', 'dateTo'], params);
+
     return CSCoreSDK.ResourceUtils.CallPaginatedListWithSuffix(this, null, "transactions", params, response => {
 
       CSCoreSDK.EntityUtils.addDatesToItems(['dueDate', 'processingDate'], response);
@@ -29,7 +32,23 @@ export class TransactionsResource extends CSCoreSDK.Resource implements
  * @interface TransactionsParameters
  * @extends {CSCoreSDK.Paginated}
  */
-export interface TransactionsParameters extends CSCoreSDK.Paginated { }
+export interface TransactionsParameters extends CSCoreSDK.Paginated, CSCoreSDK.Sortable {
+
+  /**
+   * For filtering transactions by date
+   */
+  dateFrom?: Date;
+
+  /**
+   * For filtering transactions by date
+   */
+  dateTo?: Date;
+
+  /**
+   * For filtering transactions by other parameters (account number, name, variable and constant symbol) Example: ucet pana Novaka.
+   */
+  filter?: string;
+}
 
 /**
  * @interface TransactionList
@@ -71,6 +90,12 @@ export interface Transaction {
   * information about the receiver
   */
   receiver: Receiver;
+
+  /**
+  * Get description of transaction type
+  * f.e. Úhrada
+  */
+  typeDescription?: string;
 }
 
 /**

@@ -60,7 +60,7 @@
     "serve": "^1.4.0",
     "shelljs": "^0.5.3",
     "ts-loader": "^0.7.2",
-    "typescript": "^2.0.0",
+    "typescript": "2.2.1",
     "underscore": "^1.8.3",
     "webpack": "^1.12.9",
     "cs-core-sdk": "^1.1.0",
