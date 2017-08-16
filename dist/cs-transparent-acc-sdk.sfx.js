@@ -43,7 +43,7 @@ var CSTransparentAccSDK =
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var __extends = (this && this.__extends) || (function () {
@@ -104,15 +104,15 @@ var CSTransparentAccSDK =
 	exports.TransparentAccountsClient = TransparentAccountsClient;
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = CSCoreSDK;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var __extends = (this && this.__extends) || (function () {
@@ -217,9 +217,9 @@ var CSTransparentAccSDK =
 	}
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var __extends = (this && this.__extends) || (function () {
@@ -250,6 +250,7 @@ var CSTransparentAccSDK =
 	         * @returns {Promise<TransactionList>}
 	         */
 	        _this.list = function (params) {
+	            CSCoreSDK.EntityUtils.transformDatesToISO(['dateFrom', 'dateTo'], params);
 	            return CSCoreSDK.ResourceUtils.CallPaginatedListWithSuffix(_this, null, "transactions", params, function (response) {
 	                CSCoreSDK.EntityUtils.addDatesToItems(['dueDate', 'processingDate'], response);
 	                return response;
@@ -262,5 +263,5 @@ var CSTransparentAccSDK =
 	exports.TransactionsResource = TransactionsResource;
 
 
-/***/ }
+/***/ })
 /******/ ]);

@@ -19,7 +19,19 @@ declare module CSTransparentAccSDK {
 	 * @interface TransactionsParameters
 	 * @extends {CSCoreSDK.Paginated}
 	 */
-	export interface TransactionsParameters extends CSCoreSDK.Paginated {
+	export interface TransactionsParameters extends CSCoreSDK.Paginated, CSCoreSDK.Sortable {
+	    /**
+	     * For filtering transactions by date
+	     */
+	    dateFrom?: Date;
+	    /**
+	     * For filtering transactions by date
+	     */
+	    dateTo?: Date;
+	    /**
+	     * For filtering transactions by other parameters (account number, name, variable and constant symbol) Example: ucet pana Novaka.
+	     */
+	    filter?: string;
 	}
 	/**
 	 * @interface TransactionList
@@ -55,6 +67,11 @@ declare module CSTransparentAccSDK {
 	    * information about the receiver
 	    */
 	    receiver: Receiver;
+	    /**
+	    * Get description of transaction type
+	    * f.e. Úhrada
+	    */
+	    typeDescription?: string;
 	}
 	/**
 	 * @interface TransactionAmount
@@ -252,6 +269,10 @@ declare module CSTransparentAccSDK {
 	 * @extends {CSCoreSDK.Paginated}
 	 */
 	export interface TransparentAccountsParameters extends CSCoreSDK.Paginated {
+	    /**
+	     * For filtering accounts by name or description Example: ucet pana Novaka.
+	     */
+	    filter?: string;
 	}
 
 }

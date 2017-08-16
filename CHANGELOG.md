@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+        
+## [1.1.0] - 2017-08-16
 
 ## Added
 - Parameters for filtering and sorting transparent accounts and transactions
