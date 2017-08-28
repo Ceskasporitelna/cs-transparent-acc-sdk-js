@@ -1,8 +1,7 @@
 /// <reference path="../node_modules/cs-core-sdk/dist/cs-core-sdk.sfx.d.ts"/>
 /// <reference path="../build/cs-transparent-acc-sdk.sfx.d.ts"/>
-/// <reference types="jasmine" />
-/// <reference types="node" />
 
+import { TransactionsSortableFields } from '../lib/transactions';
 var CoreSDK = require('cs-core-sdk');
 var transparentAcc  = require('../build/cs-transparent-acc-sdk.node.js');
 var judge : CSCoreSDK.Judge = null;
@@ -249,7 +248,7 @@ describe("TransparentAcc SDK",function(){
               return client.accounts.withId("000000-0109213309").transactions.list({
                 pageSize: 100,
                 pageNumber: 0,
-                sort: 'amount',
+                sort: TransactionsSortableFields.AMOUNT,
                 order: 'asc',
                 filter: '0598',
                 dateFrom: new Date(2017, 4, 12),

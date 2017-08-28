@@ -100,7 +100,7 @@ If you are on the second or latter page you can also call `prevPage` on the list
 
 ### Sorting
 
-Methods that support server side sorting take object with properties `sort` and `order` as a parameter. These methods' parameters interfaces extend [`Sortable`](https://github.com/Ceskasporitelna/cs-core-sdk-js/blob/master/lib/web-api/lists.ts) interface. Both `sort` and `order` parameters are optional but you obviously cannot use `order` parameter without using `sort` parameter. Available `Sort` values are dependent on individual API. `Order` can be `asc` for ascending which is also default or `desc` for descending. These parameters must be defined as array of strings. 
+Methods that support server side sorting take object with properties `sort` and `order` as a parameter. These methods' parameters interfaces extend [`Sortable`](https://github.com/Ceskasporitelna/cs-core-sdk-js/blob/master/lib/web-api/lists.ts) interface which takes enum as a generic. Both `sort` and `order` parameters are optional but you obviously cannot use `order` parameter without using `sort` parameter. Available `Sort` values are dependent on individual API and we provide you with these values in enums where possible. You can use these enums or just pass strings. `Order` can be `asc` for ascending which is also default or `desc` for descending. We provide [`Order`](https://github.com/Ceskasporitelna/cs-core-sdk-js/blob/master/lib/web-api/lists.ts#L156) enum for these values too.
 
 ```javascript
 
@@ -110,8 +110,8 @@ Methods that support server side sorting take object with properties `sort` and 
         .list({
             pageNumber: 0,
             pageSize: 10,
-            sort: ['type'],
-            order: ['desc']
+            sort: SortableFields.ID,
+            order: CSCoreSDK.Order.ASCENDING,
         })
         .then(function(response) {
             // ...

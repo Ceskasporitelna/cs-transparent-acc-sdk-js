@@ -4,7 +4,13 @@
 		"module": "commonjs",
 		"declaration": true,
 		"target": "es5",
-        "moduleResolution" : "node" 
+		"moduleResolution": "node",
+		"types": [
+			"jasmine",
+			"node"
+		]
 	},
-	"exclude" : ["build"]
+	"exclude": [
+		"build"
+	]
 }
