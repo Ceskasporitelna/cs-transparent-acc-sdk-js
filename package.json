@@ -45,7 +45,6 @@
   "homepage": "https://developers.csas.cz",
   "devDependencies": {
     "axios": "^0.8.1",
-    "cs-core-sdk": "1.2.0",
     "dts-generator": "https://github.com/Applifting/dts-generator.git#compiled-with-types-option",
     "es6-promise": "^4.0.5",
     "jasmine": "^2.4.1",
@@ -77,6 +76,7 @@
     "@types/jasmine": "^2.5.41",
     "@types/nock": "^8.2.0",
     "@types/node": "^7.0.5",
-    "@types/underscore": "^1.7.36"
+    "@types/underscore": "^1.7.36",
+    "cs-core-sdk": "^1.2.2"
   }
 }
