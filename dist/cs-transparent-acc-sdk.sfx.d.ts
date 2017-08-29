@@ -16,10 +16,20 @@ declare module CSTransparentAccSDK {
 	    list: (params: TransactionsParameters) => Promise<TransactionList>;
 	}
 	/**
+	 * The enum Transactions sortable fields.
+	 * @enum TransactionsSortableFields
+	 */
+	export enum TransactionsSortableFields {
+	    AMOUNT = "amount",
+	    PROCESSING_DATE = "processingDate",
+	    SENDER = "sender",
+	}
+	/**
 	 * @interface TransactionsParameters
 	 * @extends {CSCoreSDK.Paginated}
+	 * @extends {CSCoreSDK.Paginated}
 	 */
-	export interface TransactionsParameters extends CSCoreSDK.Paginated, CSCoreSDK.Sortable {
+	export interface TransactionsParameters extends CSCoreSDK.Paginated, CSCoreSDK.Sortable<TransactionsSortableFields> {
 	    /**
 	     * For filtering transactions by date
 	     */

@@ -3,6 +3,8 @@
 ## [Unreleased]
         
 ## [1.2.0] - 2017-08-29
+        
+## [1.2.0] - 2017-08-29
 ## Added
 - Add TransactionsSortableFields
 - Add yarn.lock for locking versions of dependencies

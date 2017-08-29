@@ -76,7 +76,7 @@ var CSTransparentAccSDK =
 	 * @class TransparentAccountsClient
 	 * @extends {CSCoreSDK.WebApiClient}
 	 */
-	var TransparentAccountsClient = (function (_super) {
+	var TransparentAccountsClient = /** @class */ (function (_super) {
 	    __extends(TransparentAccountsClient, _super);
 	    /**
 	     * Creates new instance of TransparentAccClient
@@ -135,7 +135,7 @@ var CSTransparentAccSDK =
 	 * @implements {CSCoreSDK.PaginatedListEnabled<TransparentAccount>}
 	 * @implements {CSCoreSDK.HasInstanceResource<TransparentAccountResource>}
 	 */
-	var TransparentAccountsResource = (function (_super) {
+	var TransparentAccountsResource = /** @class */ (function (_super) {
 	    __extends(TransparentAccountsResource, _super);
 	    function TransparentAccountsResource() {
 	        var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -174,7 +174,7 @@ var CSTransparentAccSDK =
 	 * @extends {CSCoreSDK.InstanceResource}
 	 * @implements {CSCoreSDK.GetEnabled<TransparentAccount>}
 	 */
-	var TransparentAccountResource = (function (_super) {
+	var TransparentAccountResource = /** @class */ (function (_super) {
 	    __extends(TransparentAccountResource, _super);
 	    function TransparentAccountResource() {
 	        var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -240,7 +240,7 @@ var CSTransparentAccSDK =
 	 * @extends {CSCoreSDK.Resource}
 	 * @implements {CSCoreSDK.PaginatedListEnabled<Transaction>}
 	 */
-	var TransactionsResource = (function (_super) {
+	var TransactionsResource = /** @class */ (function (_super) {
 	    __extends(TransactionsResource, _super);
 	    function TransactionsResource() {
 	        var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -261,6 +261,16 @@ var CSTransparentAccSDK =
 	    return TransactionsResource;
 	}(CSCoreSDK.Resource));
 	exports.TransactionsResource = TransactionsResource;
+	/**
+	 * The enum Transactions sortable fields.
+	 * @enum TransactionsSortableFields
+	 */
+	var TransactionsSortableFields;
+	(function (TransactionsSortableFields) {
+	    TransactionsSortableFields["AMOUNT"] = "amount";
+	    TransactionsSortableFields["PROCESSING_DATE"] = "processingDate";
+	    TransactionsSortableFields["SENDER"] = "sender";
+	})(TransactionsSortableFields = exports.TransactionsSortableFields || (exports.TransactionsSortableFields = {}));
 
 
 /***/ })
