@@ -54,7 +54,7 @@ var transparentAccountsClient = CSTransparentAccSDK.getClient();
 **See [CoreSDK configuration guide](https://github.com/Ceskasporitelna/cs-core-sdk-js/blob/master/docs/configuration.md)** for all the available configuration options.
 
 ## Usage Guide
-**See [Usage Guide](./docs/transparent-acc.md)** for usage instructions.
+**See [Usage Guide](./docs/)** for usage instructions.
 
 # Development
 The SDK itself is written in **TypeScript**, packaged by **webpack**, tested by **jasmine** & **karma** and distributed thorugh **npm**. It uses **tsd** for TypeScript definitions.
