@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+        
+## [1.2.1] - 2017-10-30
 ### Fixed
 - Broken link to Usage Guide in README.md
         
