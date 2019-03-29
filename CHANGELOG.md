@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+        
+## [1.2.2] - 2019-03-29
 ### Fixed
 - remove some dependencies and update some to fix vulnerability issues
 
